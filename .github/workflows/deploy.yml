@@ -1,0 +1,98 @@
+# Builds and deploys the site to GitHub Pages on every push to main.
+#
+# Layout this workflow assumes:
+#   /                          ← repo root
+#     index.html               ← parent landing page
+#     mrftoolkit/              ← Vite project source
+#       package.json
+#       package-lock.json
+#       vite.config.js
+#       src/
+#       public/
+#
+# After build, the deployed structure on Pages is:
+#   /index.html                 ← parent page, copied as-is
+#   /mrftoolkit/index.html      ← toolkit, built from source
+#   /mrftoolkit/assets/...
+#   /mrftoolkit/downloads/...
+#   /mrftoolkit/favicon.svg
+#   /mrftoolkit/...
+
+name: Deploy site to GitHub Pages
+
+on:
+  # Run on every push to main
+  push:
+    branches: [main]
+  # Also allow manual trigger from the Actions tab in GitHub UI
+  workflow_dispatch:
+
+# Permissions the workflow needs to publish to Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Cancel any in-progress run if a new commit is pushed
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: mrftoolkit/package-lock.json
+
+      - name: Install dependencies
+        working-directory: mrftoolkit
+        run: npm ci
+
+      - name: Build the toolkit
+        working-directory: mrftoolkit
+        run: npm run build
+
+      - name: Assemble deploy directory
+        # Combine the parent page (root files) with the built toolkit (mrftoolkit/dist)
+        # into a single _site folder that mirrors the desired URL structure.
+        run: |
+          mkdir -p _site
+          # Copy parent-level files (index.html and any other static files at root),
+          # but skip the project source folder, the workflow folder, and node_modules.
+          rsync -a \
+            --exclude='_site' \
+            --exclude='mrftoolkit' \
+            --exclude='.github' \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            ./ _site/
+          # Copy the built toolkit into _site/mrftoolkit/
+          mkdir -p _site/mrftoolkit
+          cp -r mrftoolkit/dist/. _site/mrftoolkit/
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

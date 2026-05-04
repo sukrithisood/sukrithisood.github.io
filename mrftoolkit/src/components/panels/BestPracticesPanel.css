@@ -1,0 +1,240 @@
+/* src/components/panels/BestPracticesPanel.css */
+.panel--bp {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  background: var(--bg-surface);
+}
+
+.bp-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+/* ── Sidebar ── */
+.bp-sidebar {
+  position: sticky;
+  /* Sit below sticky header+nav, with breathing room */
+  top: calc(var(--header-h, 44px) + var(--nav-h, 48px) + var(--space-3));
+}
+.bp-sidebar ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.25rem; }
+
+.bp-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+.bp-item:hover {
+  border-color: var(--primary-200);
+  color: var(--primary);
+}
+.bp-item--active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-fg);
+}
+.bp-item--active .bp-item__num { color: rgba(255,255,255,0.7); }
+
+.bp-item__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+.bp-item__label { font-weight: 500; line-height: 1.4; }
+
+/* ── Mobile selector (hidden on desktop) ── */
+.bp-mobile-selector { display: none; }
+
+/* ── Content area ── */
+.bp-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  min-height: 480px;
+}
+
+.bp-panel-content { display: flex; flex-direction: column; gap: var(--space-4); }
+.bp-panel__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 500;
+  color: var(--primary);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.bp-panel__intro {
+  font-size: var(--fs-md);
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  border-left: 3px solid var(--accent);
+  background: var(--accent-50);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.bp-subheading {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.bp-section-divider {
+  height: 1px;
+  background: var(--border);
+  margin-block: var(--space-3);
+}
+
+/* ── Coming soon placeholder ── */
+.bp-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-7) var(--space-4);
+  color: var(--text-muted);
+}
+.bp-soon__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.bp-soon__body {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  max-width: 50ch;
+  line-height: 1.6;
+}
+
+/* ── Mobile: ≤900px ── */
+@media (max-width: 900px) {
+  .bp-layout { grid-template-columns: 1fr; gap: var(--space-3); }
+  .bp-sidebar { display: none; }
+  .bp-mobile-selector {
+    display: block;
+    position: relative;
+  }
+  .bp-mobile-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font: inherit;
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+  }
+  .bp-mobile-trigger__num {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--primary);
+  }
+  .bp-mobile-trigger__label { flex: 1; font-weight: 500; }
+
+  .bp-mobile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.4rem 0 0;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .bp-mobile-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    font: inherit;
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .bp-mobile-item:last-child { border-bottom: none; }
+  .bp-mobile-item:hover { background: var(--primary-50); color: var(--primary); }
+  .bp-mobile-item--active { background: var(--primary-50); color: var(--primary); font-weight: 600; }
+  .bp-mobile-item__num {
+    font-family: var(--font-display);
+    color: var(--primary);
+    font-weight: 600;
+  }
+}
+
+/* ════════════════════════════════════════
+   SCALE PANEL
+   ════════════════════════════════════════ */
+.scale-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+.scale-card {
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.scale-card__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--primary-50);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.scale-card__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.scale-card__body {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.scale-footer-note {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: var(--space-3);
+}
+@media (max-width: 900px) {
+  .scale-cards { grid-template-columns: 1fr; }
+}

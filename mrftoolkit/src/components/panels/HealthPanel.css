@@ -1,0 +1,318 @@
+/* src/components/panels/HealthPanel.css */
+.panel--health {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  background: var(--bg-subtle);
+}
+
+/* ════════════════════════════════════════
+   ASSESSMENT CALCULATOR
+   ════════════════════════════════════════ */
+.assess {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-7);
+  overflow: hidden;
+}
+
+.assess__head {
+  padding: var(--space-5) var(--space-5) var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.assess__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+.assess__sub {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+.assess__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+.assess__field { display: flex; flex-direction: column; gap: 0.4rem; }
+.assess__label {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.assess__unit { color: var(--text-muted); font-weight: 400; }
+
+.assess__input {
+  font: inherit;
+  font-size: var(--fs-sm);
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+.assess__input::placeholder { color: var(--text-subtle); }
+.assess__input:hover { border-color: var(--border-strong); }
+.assess__input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 79, 159, 0.12);
+}
+
+.assess__footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border-subtle);
+}
+.assess__hint {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+/* Results */
+.assess__results { padding: var(--space-5); }
+.assess__results-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+.assess__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-sm);
+  color: var(--primary);
+  font-weight: 600;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-sm);
+}
+.assess__back:hover { background: var(--primary-50); }
+.assess__results-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.assess__results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.zone-card {
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.zone-card--g { background: var(--success-50);  border-color: var(--success-border); }
+.zone-card--a { background: var(--warning-50);  border-color: var(--warning-border); }
+.zone-card--r { background: var(--danger-50);   border-color: var(--danger-border); }
+
+.zone-card__label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.zone-card__value {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.zone-card__unit {
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 0.2em;
+}
+.zone-card__pill {
+  align-self: flex-start;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+}
+.zone-card--g .zone-card__pill { background: var(--success); color: #fff; }
+.zone-card--a .zone-card__pill { background: var(--warning); color: #fff; }
+.zone-card--r .zone-card__pill { background: var(--danger);  color: #fff; }
+.zone-card__tip {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ════════════════════════════════════════
+   KPI REFERENCE
+   ════════════════════════════════════════ */
+.kpi-ref__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.kpi-ref__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.kpi-ref__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.kpi-tab {
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  border-radius: var(--radius-pill);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+.kpi-tab:hover { color: var(--primary); border-color: var(--primary-200); }
+.kpi-tab--active {
+  background: var(--primary);
+  color: var(--primary-fg);
+  border-color: var(--primary);
+}
+.kpi-tab__count { opacity: 0.7; font-weight: 400; margin-left: 0.15em; }
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.kpi-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+.kpi-card:hover {
+  border-color: var(--primary-200);
+  box-shadow: var(--shadow-md);
+}
+
+.kpi-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.kpi-card__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.005em;
+  line-height: 1.25;
+}
+.kpi-card__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-50);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.kpi-card__formula {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+.kpi-card__desc {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.kpi-card__bands {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+.kpi-band {
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.4rem;
+  text-align: center;
+  border: 1px solid;
+}
+.kpi-band__top {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.kpi-band__bot {
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.15rem;
+  opacity: 0.85;
+}
+.kpi-band--g { background: var(--success-50); border-color: var(--success-border); color: var(--success); }
+.kpi-band--a { background: var(--warning-50); border-color: var(--warning-border); color: var(--warning); }
+.kpi-band--r { background: var(--danger-50);  border-color: var(--danger-border);  color: var(--danger); }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .assess__grid { grid-template-columns: 1fr 1fr; }
+  .assess__results-grid { grid-template-columns: 1fr 1fr; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .assess__grid { grid-template-columns: 1fr; }
+  .assess__results-grid { grid-template-columns: 1fr; }
+  .kpi-grid { grid-template-columns: 1fr; }
+  .assess__head, .assess__grid, .assess__footer, .assess__results { padding-inline: var(--space-4); }
+}

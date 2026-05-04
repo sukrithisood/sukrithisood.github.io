@@ -1,0 +1,134 @@
+/* ══════════════════════════════════════════
+   DESIGN TOKENS
+   Primary: #0F0E9A (locked per spec)
+   Secondaries chosen for WCAG AA contrast on white
+   ══════════════════════════════════════════ */
+:root {
+  /* ── Brand: primary blue ── */
+  --primary: #004F9F;             /* main brand — soothing institutional blue */
+  --primary-hover: #003D7A;       /* darker for hover */
+  --primary-active: #002B58;      /* even darker for active/pressed */
+  --primary-50: #E8F0F9;          /* very light cool tint */
+  --primary-100: #CDDDF0;         /* light tint for hover backgrounds */
+  --primary-200: #94BAE0;         /* borders, subtle accents */
+  --primary-600: #004F9F;         /* alias of --primary for scale clarity */
+  --primary-fg: #FFFFFF;          /* text on primary background */
+
+  /* ── Accent: bronze-amber (calibrated to complement #004F9F) ── */
+  --accent: #B45309;              /* deeper bronze-amber, AA on white at 5.1:1 */
+  --accent-hover: #92400E;        /* darker for hover */
+  --accent-50: #FBF3E8;
+  --accent-100: #F4DDB6;
+  --accent-border: #D4A053;
+  --accent-fg: #FFFFFF;
+
+  /* ── Semantic colors (improved contrast) ── */
+  --success: #0E7C3A;             /* AA on white, was lighter green */
+  --success-50: #E8F5EE;
+  --success-border: #8BC9A4;
+
+  --warning: #B45309;             /* AA on white */
+  --warning-50: #FFF7ED;
+  --warning-border: #F5B97A;
+
+  --danger: #B42318;              /* AA on white */
+  --danger-50: #FEF1F0;
+  --danger-border: #F4A8A1;
+
+  --info: #0369A1;                /* sky-blue — clearly distinct from primary */
+  --info-50: #E0F2FE;
+  --info-border: #7DD3FC;
+
+  /* ── Neutrals (5.4:1 to 12.6:1 against white) ── */
+  --text-primary: #0E1116;        /* near-black, slightly warm */
+  --text-secondary: #3D4451;      /* AA on white, was #555 (4.5:1 → 9.4:1) */
+  --text-muted: #6B7280;          /* AA on white, was #999 which FAILED AA */
+  --text-subtle: #9AA1AC;         /* decorative only, never main text */
+
+  /* ── Surfaces ── */
+  --bg-page: #FFFFFF;             /* main page background — pure white */
+  --bg-surface: #FFFFFF;          /* cards, inner panels */
+  --bg-subtle: #F5F7FA;           /* alternating sections — faint cool grey */
+  --bg-overlay: rgba(14, 17, 22, 0.55);
+
+  /* ── Borders ── */
+  --border: #E4E7EC;              /* cool, neutral border */
+  --border-strong: #C7CDD6;
+  --border-subtle: #EEF1F5;
+
+  /* ── Shadow ── */
+  --shadow-sm: 0 1px 3px rgba(14, 17, 22, .07), 0 1px 2px rgba(14, 17, 22, .04);
+  --shadow-md: 0 4px 16px rgba(14, 17, 22, .09), 0 2px 6px rgba(14, 17, 22, .05);
+  --shadow-lg: 0 8px 32px rgba(14, 17, 22, .13), 0 2px 8px rgba(14, 17, 22, .06);
+  --shadow-focus: 0 0 0 3px rgba(0, 79, 159, .25);
+
+  /* ── Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* ── Spacing scale (4px base) ── */
+  --space-1: 0.25rem;   /* 4 */
+  --space-2: 0.5rem;    /* 8 */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 */
+  --space-5: 1.5rem;    /* 24 */
+  --space-6: 2rem;      /* 32 */
+  --space-7: 3rem;      /* 48 */
+  --space-8: 4rem;      /* 64 */
+
+  /* ── Fluid typography
+     clamp(min, preferred, max) — scales with viewport
+     Calibrated for readability from 320px to 1440px+
+     ── */
+  --fs-xs:    clamp(0.6875rem, 0.66rem + 0.13vw, 0.75rem);    /* 11→12 */
+  --fs-sm:    clamp(0.8125rem, 0.79rem + 0.13vw, 0.875rem);   /* 13→14 */
+  --fs-base:  clamp(0.9375rem, 0.9rem + 0.19vw, 1rem);        /* 15→16 */
+  --fs-md:    clamp(1rem, 0.94rem + 0.31vw, 1.125rem);        /* 16→18 */
+  --fs-lg:    clamp(1.125rem, 1.05rem + 0.38vw, 1.25rem);     /* 18→20 */
+  --fs-xl:    clamp(1.25rem, 1.13rem + 0.63vw, 1.5rem);       /* 20→24 */
+  --fs-2xl:   clamp(1.5rem, 1.31rem + 0.94vw, 1.875rem);      /* 24→30 */
+  --fs-3xl:   clamp(1.875rem, 1.56rem + 1.56vw, 2.5rem);      /* 30→40 */
+  --fs-4xl:   clamp(2rem, 1.5rem + 2.5vw, 3rem);              /* 32→48 — tighter for hero */
+
+  /* ── Eyebrow / micro-label (uppercase tracking) ── */
+  --fs-eyebrow: clamp(0.625rem, 0.6rem + 0.13vw, 0.6875rem);  /* 10→11 */
+
+  /* ── Line heights ── */
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-normal: 1.55;
+  --lh-relaxed: 1.7;
+
+/* ── Typography ── */
+  --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* ── Layout ── */
+  --container-max: 1280px;
+  --container-pad-x: clamp(1rem, 4vw, 3rem);
+
+  /* ── Z-index scale ── */
+  --z-header: 100;
+  --z-nav: 99;
+  --z-dropdown: 200;
+  --z-modal: 300;
+
+  /* ── Motion ── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 220ms;
+  --duration-slow: 400ms;
+}
+
+/* Honor the user's motion preference. Lighthouse + accessibility win. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

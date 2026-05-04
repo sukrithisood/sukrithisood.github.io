@@ -1,0 +1,78 @@
+/* src/components/ui/Button.css */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn__label { display: inline-block; }
+
+/* ── Sizes ── */
+.btn--sm { font-size: var(--fs-xs); padding: 0.5rem 0.875rem; }
+.btn--md { font-size: var(--fs-sm); padding: 0.7rem 1.25rem; }
+.btn--lg { font-size: var(--fs-base); padding: 0.875rem 1.5rem; }
+
+/* ── Variants ── */
+.btn--primary {
+  background: var(--primary);
+  color: var(--primary-fg);
+  border: 1px solid var(--primary);
+}
+.btn--primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+.btn--primary:active { background: var(--primary-active); border-color: var(--primary-active); }
+
+.btn--outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+.btn--outline:hover {
+  background: var(--primary);
+  color: var(--primary-fg);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid transparent;
+}
+.btn--ghost:hover { background: var(--bg-subtle); }
+
+.btn--accent {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border: 1px solid var(--accent);
+}
+.btn--accent:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+/* When sitting on the dark hero, primary should switch to white-on-blue accent */
+.btn--on-dark.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.btn--on-dark.btn--primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+.btn--on-dark.btn--outline {
+  color: #fff;
+  border-color: rgba(255,255,255,0.5);
+}
+.btn--on-dark.btn--outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
+  color: #fff;
+}
