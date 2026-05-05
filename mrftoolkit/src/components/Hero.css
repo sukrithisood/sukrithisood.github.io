@@ -77,15 +77,35 @@
   object-fit: cover;
   object-position: center;
 }
+/* Layered gradients so the image fades into the primary blue on BOTH the
+   left edge (where it meets the copy block) and the right edge (where it
+   meets the page edge). Uses currentColor mixin via rgba to match var(--primary)
+   = #004F9F = (0, 79, 159). */
 .hero__media-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    var(--primary) 0%,
-    rgba(15, 14, 154, 0.4) 18%,
-    rgba(15, 14, 154, 0) 40%
-  );
+  background:
+    /* Left fade: solid blue at edge → transparent across 40% — blends into copy column */
+    linear-gradient(
+      to right,
+      rgba(0, 79, 159, 1) 0%,
+      rgba(0, 79, 159, 0.55) 15%,
+      rgba(0, 79, 159, 0) 40%
+    ),
+    /* Right fade: transparent across most of the image → solid blue at right edge —
+       softens the hard right boundary against the blue page background */
+    linear-gradient(
+      to left,
+      rgba(0, 79, 159, 1) 0%,
+      rgba(0, 79, 159, 0.55) 15%,
+      rgba(0, 79, 159, 0) 30%
+    ),
+    /* Subtle vertical darken at the bottom for finish */
+    linear-gradient(
+      to bottom,
+      rgba(0, 79, 159, 0) 70%,
+      rgba(0, 79, 159, 0.35) 100%
+    );
   pointer-events: none;
 }
 
@@ -104,10 +124,12 @@
     max-height: 320px;
   }
   .hero__media-overlay {
+    /* On mobile the image is on top, so we only need a vertical fade
+       into the blue copy block below */
     background: linear-gradient(
       to bottom,
-      rgba(15, 14, 154, 0) 50%,
-      var(--primary) 100%
+      rgba(0, 79, 159, 0) 50%,
+      rgba(0, 79, 159, 1) 100%
     );
   }
   .hero__title { max-width: none; }
