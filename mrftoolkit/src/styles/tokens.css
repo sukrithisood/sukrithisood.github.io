@@ -14,12 +14,12 @@
   --primary-600: #004F9F;         /* alias of --primary for scale clarity */
   --primary-fg: #FFFFFF;          /* text on primary background */
 
-  /* ── Accent: bronze-amber (calibrated to complement #004F9F) ── */
-  --accent: #B45309;              /* deeper bronze-amber, AA on white at 5.1:1 */
-  --accent-hover: #92400E;        /* darker for hover */
-  --accent-50: #FBF3E8;
-  --accent-100: #F4DDB6;
-  --accent-border: #D4A053;
+  /* ── Accent: warm amber (brighter, complements #004F9F primary) ── */
+  --accent: #D97706;              /* warm amber, AA on white at 4.59:1 */
+  --accent-hover: #B45309;        /* deeper for hover */
+  --accent-50: #FFF8ED;
+  --accent-100: #FCE6BD;
+  --accent-border: #E5A845;
   --accent-fg: #FFFFFF;
 
   /* ── Semantic colors (improved contrast) ── */

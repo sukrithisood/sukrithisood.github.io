@@ -26,7 +26,7 @@ export default function Governance() {
       {/* Quote placeholder — drop a real famous quote here later */}
       {/* <blockquote class="gov-quote"> ... </blockquote> */}
       <div className="gov-quote-placeholder" aria-hidden="true">
-        Add quote
+        MRF Quote to be added here soon
       </div>
 
       {/* ── Governance spectrum ── */}

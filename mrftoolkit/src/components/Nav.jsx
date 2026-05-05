@@ -12,13 +12,16 @@ export default function Nav() {
   useElementHeight(navRef, '--nav-h')
 
   const sectionIds = navItems.map((n) => `sec-${n.id}`)
-  // Tighter rootMargin: section becomes active as soon as its top
-  // crosses just below the sticky nav (~120px from top), and stays
-  // active until it fully exits the bottom.
-  const activeId = useScrollSpy(sectionIds, {
-    rootMargin: '-120px 0px -70% 0px',
-  })
+  const activeId = useScrollSpy(sectionIds)
 
+  // Intent override: when the user clicks a nav item, immediately show
+  // that item as active rather than waiting for the smooth-scroll to
+  // finish and the scroll-spy to catch up. Cleared once the scroll
+  // settles (we detect this by waiting for one frame after the scrollend
+  // event, falling back to a timeout for browsers without scrollend).
+  const [intentId, setIntentId] = useState(null)
+
+  // Close mobile menu when viewport widens past mobile breakpoint
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)')
     const handler = (e) => { if (e.matches) setOpen(false) }
@@ -26,6 +29,7 @@ export default function Nav() {
     return () => mq.removeEventListener('change', handler)
   }, [])
 
+  // Close mobile menu on Escape
   useEffect(() => {
     if (!open) return
     const handler = (e) => { if (e.key === 'Escape') setOpen(false) }
@@ -33,7 +37,7 @@ export default function Nav() {
     return () => window.removeEventListener('keydown', handler)
   }, [open])
 
-  // Lock body scroll when mobile menu is open (prevents background scroll)
+  // Lock body scroll while mobile menu is open
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden'
@@ -46,8 +50,37 @@ export default function Nav() {
   const handleClick = (e, id) => {
     e.preventDefault()
     setOpen(false)
+
+    // Show the clicked item as active immediately for snappy UX.
+    setIntentId(id)
+
     const target = document.getElementById(id)
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (!target) return
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+    // Clear the intent once the scroll has completed. We prefer the modern
+    // 'scrollend' event (Chrome 114+, Safari 18+, Firefox 109+); fall back
+    // to a timeout for older browsers so we never end up stuck on intent.
+    const cleanup = () => setIntentId(null)
+    let timeoutId
+
+    const onScrollEnd = () => {
+      cleanup()
+      window.removeEventListener('scrollend', onScrollEnd)
+      clearTimeout(timeoutId)
+    }
+
+    if ('onscrollend' in window) {
+      window.addEventListener('scrollend', onScrollEnd, { once: true })
+      // Safety net in case scrollend doesn't fire (e.g. user interrupts
+      // the scroll by pressing another nav item).
+      timeoutId = setTimeout(onScrollEnd, 1500)
+    } else {
+      // Older browsers: smooth scroll typically completes within ~600ms.
+      // 1000ms is generous enough to cover slower devices.
+      timeoutId = setTimeout(cleanup, 1000)
+    }
   }
 
   return (
@@ -69,7 +102,8 @@ export default function Nav() {
         >
           {navItems.map(({ id, label }) => {
             const sectionId = `sec-${id}`
-            const isActive = activeId === sectionId
+            // Intent (just-clicked) takes precedence; once cleared, fall back to scroll-spy.
+            const isActive = (intentId ?? activeId) === sectionId
             return (
               <li key={id}>
                 <a

@@ -201,22 +201,108 @@
   text-align: center;
 }
 
-/* Mobile: collapse the matrix into a simpler stacked view */
+/* ════════════════════════════════════════
+   MOBILE — keep the 3x3 heat map but compact it tightly
+   ════════════════════════════════════════ */
 @media (max-width: 700px) {
-  .risk-matrix {
-    grid-template-columns: 18px 1fr;
-    grid-template-rows: auto 1fr auto;
+  /* Pull container padding in so we have more room for the matrix */
+  .risk-map {
+    padding: var(--space-3);
   }
-  .risk-matrix__top-labels {
-    grid-column: 2 / 3;
+
+  .risk-map__title {
+    font-size: var(--fs-sm);
+    line-height: 1.4;
+  }
+
+  /* Smaller legend, tightly packed */
+  .risk-legend {
+    gap: 0.45rem 0.85rem;
+    margin-bottom: var(--space-3);
+  }
+  .risk-legend__item {
     font-size: 0.625rem;
+    gap: 0.3rem;
   }
+  .risk-swatch { width: 11px; height: 11px; }
+
+  /* Matrix layout: thinner Y-axis label, thinner row labels */
+  .risk-matrix {
+    grid-template-columns: 16px 56px 1fr;
+    gap: 0.4rem 0.3rem;
+  }
+
+  .risk-matrix__top-labels {
+    font-size: 0.6rem;
+    font-weight: 600;
+  }
+  .risk-matrix__top-labels span {
+    line-height: 1.15;
+  }
+
+  .risk-matrix__y-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
   .risk-matrix__row-labels {
-    display: none;
+    font-size: 0.6rem;
+    padding-right: 0.2rem;
   }
-  .risk-matrix__grid { min-height: 280px; }
-  .risk-bubble__dot { width: 32px; height: 32px; font-size: 0.625rem; }
-  .risk-bubble__label { font-size: 0.625rem; }
+
+  .risk-matrix__grid {
+    min-height: 360px;
+  }
+
+  .risk-matrix__x-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  .risk-cell {
+    min-height: 0;
+  }
+
+  /* Bubbles: shrink dot, allow label to wrap onto two lines */
+  .risk-bubble {
+    padding: 0.15rem;
+    max-width: 90%;
+  }
+  .risk-bubble__dot {
+    width: 30px;
+    height: 30px;
+    font-size: 0.6rem;
+  }
+  .risk-bubble__label {
+    font-size: 0.55rem;
+    padding: 0.1rem 0.35rem;
+    white-space: normal;
+    line-height: 1.2;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .risk-matrix__hint {
+    font-size: 0.65rem;
+    margin-top: var(--space-2);
+  }
+}
+
+/* Even tighter for very narrow phones */
+@media (max-width: 380px) {
+  .risk-matrix {
+    grid-template-columns: 14px 48px 1fr;
+    gap: 0.3rem 0.2rem;
+  }
+  .risk-matrix__row-labels { font-size: 0.55rem; }
+  .risk-matrix__top-labels { font-size: 0.55rem; }
+  .risk-bubble__dot {
+    width: 26px;
+    height: 26px;
+    font-size: 0.55rem;
+  }
+  .risk-bubble__label { font-size: 0.5rem; }
+  .risk-matrix__grid { min-height: 320px; }
 }
 
 /* ════════════════════════════════════════

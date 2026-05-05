@@ -286,7 +286,9 @@
 .gov-chart {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  /* Was 16/10 — taller aspect gives bubbles vertical breathing room
+     and keeps them away from the corner labels. */
+  aspect-ratio: 14 / 10;
   border: 1px solid var(--border);
   background:
     repeating-linear-gradient(to right, transparent 0, transparent calc(20% - 1px), var(--border-subtle) calc(20% - 1px), var(--border-subtle) 20%),
@@ -295,7 +297,8 @@
   overflow: hidden;
 }
 
-/* Quadrant labels (corners) */
+/* Quadrant labels (corners) — sit on top of bubbles when overlap happens, with a
+   semi-transparent white pill so they remain readable instead of getting hidden. */
 .gov-chart__quad {
   position: absolute;
   font-size: var(--fs-xs);
@@ -304,12 +307,22 @@
   letter-spacing: 0.06em;
   color: var(--text-muted);
   line-height: 1.4;
-  z-index: 1;
+  /* z-index 3 ensures labels render above bubbles (which are z-index auto = 0) */
+  z-index: 3;
+  /* Subtle white-ish backdrop so labels stay readable even if a bubble
+     drifts under them. Padding + radius give it a "pill" feel. */
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 0.35rem 0.55rem;
+  border-radius: var(--radius-sm);
+  /* Slight border so it visually separates from the chart background */
+  border: 1px solid var(--border-subtle);
 }
-.gov-chart__quad--tl { top: var(--space-3); left: var(--space-3); }
-.gov-chart__quad--tr { top: var(--space-3); right: var(--space-3); text-align: right; }
-.gov-chart__quad--bl { bottom: var(--space-3); left: var(--space-3); }
-.gov-chart__quad--br { bottom: var(--space-3); right: var(--space-3); text-align: right; }
+.gov-chart__quad--tl { top: var(--space-2); left: var(--space-2); }
+.gov-chart__quad--tr { top: var(--space-2); right: var(--space-2); text-align: right; }
+.gov-chart__quad--bl { bottom: var(--space-2); left: var(--space-2); }
+.gov-chart__quad--br { bottom: var(--space-2); right: var(--space-2); text-align: right; }
 
 /* Center cross-hairs */
 .gov-chart__hline {

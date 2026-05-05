@@ -10,14 +10,17 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
 /* Sections are scroll targets — leave room for the sticky header + nav */
 section[id] {
-  scroll-margin-top: calc(var(--header-h, 44px) + var(--nav-h, 48px) + var(--space-3));
+  scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 12px);
 }
 
 body {

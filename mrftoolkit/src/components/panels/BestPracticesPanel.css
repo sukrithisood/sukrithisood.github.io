@@ -48,6 +48,16 @@
   color: var(--primary-fg);
 }
 .bp-item--active .bp-item__num { color: rgba(255,255,255,0.7); }
+/* Keep white text on active sidebar items when hovering them. Without this,
+   .bp-item:hover above sets color:primary which is blue-on-blue (invisible). */
+.bp-item--active:hover {
+  color: var(--primary-fg);
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+.bp-item--active:hover .bp-item__num {
+  color: rgba(255,255,255,0.85);
+}
 
 .bp-item__num {
   font-family: var(--font-display);

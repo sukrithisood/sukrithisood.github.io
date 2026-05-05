@@ -39,19 +39,20 @@ export default function RiskPanel() {
             ))}
           </div>
 
-          <div className="risk-matrix" role="img" aria-label="Three by three risk matrix mapping likelihood against impact">
-            {/* Top axis labels */}
+          <div
+            className="risk-matrix"
+            role="img"
+            aria-label="Three by three risk matrix mapping likelihood against impact"
+          >
             <div className="risk-matrix__top-labels" aria-hidden="true">
               {matrixAxes.likelihood.map((l) => <span key={l}>{l}</span>)}
             </div>
 
-            {/* Y-axis label and impact rows */}
             <div className="risk-matrix__y-label" aria-hidden="true">Impact</div>
             <div className="risk-matrix__row-labels" aria-hidden="true">
               {matrixAxes.impact.map((l) => <span key={l}>{l}</span>)}
             </div>
 
-            {/* The 3x3 grid */}
             <div className="risk-matrix__grid">
               {riskMatrix.map((cell, i) => (
                 <div key={i} className={`risk-cell risk-cell--${cell.tone}`}>
@@ -72,7 +73,6 @@ export default function RiskPanel() {
               ))}
             </div>
 
-            {/* X-axis label */}
             <div className="risk-matrix__x-label" aria-hidden="true">Likelihood →</div>
           </div>
 

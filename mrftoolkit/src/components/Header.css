@@ -1,47 +1,158 @@
 /* src/components/Header.css */
+
 .site-header {
   background: var(--primary);
-  color: #fff;
+  color: var(--primary-fg);
   position: sticky;
   top: 0;
-  z-index: var(--z-header);
+  z-index: 50;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+
 .site-header__inner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0.7rem var(--container-pad-x);
+  padding: 0.85rem var(--container-pad-x);
   display: grid;
+  /* Desktop: 3-column single row — partner logos | title | xynteo logo */
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--space-4);
+  min-height: 64px;
 }
-.site-header__partner {
-  font-size: var(--fs-xs);
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 0.25rem 0.7rem;
-  border-radius: var(--radius-sm);
-  letter-spacing: 0.02em;
-  opacity: 0.85;
-  white-space: nowrap;
+
+/* ── Logo blocks ── */
+.site-header__logos {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
 }
+
+.site-header__logos--left  { justify-self: start; }
+.site-header__logos--right { justify-self: end; }
+
+.site-header__logo {
+  display: block;
+  width: auto;
+  object-fit: contain;
+}
+
+.site-header__logo--pc {
+  height: 44px;
+}
+
+.site-header__logo--hul {
+  height: 36px;
+}
+
+.site-header__logo--xynteo {
+  height: 20px;
+}
+
+/* ── Center title ── */
 .site-header__title {
   font-family: var(--font-display);
-  font-size: var(--fs-md);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.005em;
   text-align: center;
-  letter-spacing: 0.01em;
-}
-.site-header__hul {
-  font-size: var(--fs-xs);
-  text-align: right;
-  opacity: 0.75;
+  color: var(--primary-fg);
+  min-width: 0;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.site-header__hul strong { opacity: 1; }
 
-/* On narrow screens, drop the side bits so the title stays readable */
-@media (max-width: 600px) {
-  .site-header__inner { grid-template-columns: 1fr; gap: 0.25rem; }
-  .site-header__partner,
-  .site-header__hul { text-align: center; }
-  .site-header__hul { font-size: 0.625rem; }
+/* ── Mobile-only partnership text — hidden on desktop ── */
+.site-header__partnership {
+  display: none;
+}
+
+/* ════════════════════════════════════════
+   MOBILE — single row visually, but grid is 2 rows × 2 columns
+   so the right-column logos span both rows next to the stacked text.
+   
+   Layout map:
+     Row 1:  title         | logos (spans 2 rows)
+     Row 2:  partnership   | logos (spans 2 rows)
+   ════════════════════════════════════════ */
+@media (max-width: 720px) {
+  .site-header__inner {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "title       logos"
+      "partnership logos";
+    column-gap: var(--space-3);
+    row-gap: 0.2rem;
+    padding-block: 0.85rem;
+    justify-items: stretch;
+    text-align: left;
+    align-items: center;
+  }
+
+  .site-header__title {
+    grid-area: title;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    padding-top: 0;
+    line-height: 1.25;
+  }
+
+  /* Partnership text: directly under title, no separator, no top border */
+  .site-header__partnership {
+    grid-area: partnership;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: auto;
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.78);
+    letter-spacing: 0.01em;
+  }
+  .site-header__partnership strong {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  /* Right column: PC + HUL stacked vertically, spanning both rows */
+.site-header__logos--left {
+    grid-area: logos;
+    /* Side-by-side logos, not stacked */
+    flex-direction: row;
+    justify-self: end;
+    align-self: center;
+    align-items: center;
+    gap: 0.7rem;
+    height: fit-content;
+  }
+
+  /* Desktop xynteo logo is hidden on mobile — partnership text replaces it */
+  .site-header__logos--right {
+    display: none;
+  }
+
+  /* Compact logo sizes so the vertical stack stays balanced with the text */
+  .site-header__logo--pc      { height: 28px; }
+  .site-header__logo--hul     { height: 22px; }
+}
+
+/* Very narrow phones — tighten further */
+@media (max-width: 420px) {
+  .site-header__inner {
+    column-gap: var(--space-2);
+    padding-block: 0.7rem;
+  }
+  .site-header__title        { font-size: 0.9rem; }
+  .site-header__partnership  { font-size: 0.7rem; }
+  .site-header__logo--pc     { height: 24px; }
+  .site-header__logo--hul    { height: 20px; }
 }

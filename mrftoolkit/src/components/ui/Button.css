@@ -56,9 +56,13 @@
 .btn--accent {
   background: var(--accent);
   color: var(--accent-fg);
-  border: 1px solid var(--accent);
+  border-color: var(--accent);
 }
-.btn--accent:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.btn--accent:hover {
+  background: var(--accent-hover);
+  color: var(--accent-fg);
+  border-color: var(--accent-hover);
+}
 
 /* When sitting on the dark hero, primary should switch to white-on-blue accent */
 .btn--on-dark.btn--primary {

@@ -1,7 +1,7 @@
 // src/data/hero.js
 export const hero = {
   eyebrow: 'Field-validated · India-specific · Practitioner-first',
-  title: 'MRF Practitioner Toolkit',
+  title: 'MRF Practitioner\'s Toolkit',
   tagline:
     'Practical guidance for Material Recovery Facility operators across India',
   meta:

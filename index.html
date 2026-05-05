@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sukrithi Sood</title>
-  <meta name="description" content="Sukrithi Sood — personal page." />
+  <meta name="description" content="Sukrithi Sood — management professional working at the intersection of brand strategy, business consulting, and consumer insight." />
   <meta name="theme-color" content="#004F9F" />
 
-  <!-- Favicon (we'll reuse the same MT mark for the parent page so the tab is consistent) -->
+  <!-- Reuse the toolkit favicon for consistency -->
   <link rel="icon" type="image/svg+xml" href="/mrftoolkit/favicon.svg" />
   <link rel="alternate icon" href="/mrftoolkit/favicon.ico" />
 
-  <!-- Same DM Sans family as the toolkit, for visual continuity -->
+  <!-- Same DM Sans family used on the toolkit -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
@@ -20,11 +20,14 @@
     :root {
       --primary: #004F9F;
       --primary-hover: #003D7A;
+      --primary-50: #E8F0F9;
+      --accent: #D97706;
       --text-primary: #14171C;
       --text-secondary: #4A5360;
       --text-muted: #7A8290;
       --border: #E4E7EC;
-      --bg-page: #FFFFFF;
+      --bg-page: #FCFCFD;
+      --bg-card: #FFFFFF;
     }
 
     * { box-sizing: border-box; }
@@ -41,47 +44,208 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* A subtle wash of color in the top-right that gives the page warmth
+       without committing to a full hero or gradient. Pure CSS, no images. */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(0, 79, 159, 0.08), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -250px;
+      left: -250px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(217, 119, 6, 0.06), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
     main {
-      max-width: 640px;
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
       margin: 0 auto;
       padding: clamp(3rem, 10vw, 6rem) 1.5rem 4rem;
     }
 
-    h1 {
-      font-size: clamp(2rem, 5vw, 2.75rem);
-      font-weight: 600;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin: 0 0 0.4rem;
+    /* ── Hero block: photo + name ── */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: clamp(1.25rem, 4vw, 2rem);
+      margin-bottom: 2.5rem;
+    }
+    .hero__photo {
+      flex-shrink: 0;
+      width: clamp(96px, 22vw, 132px);
+      height: clamp(96px, 22vw, 132px);
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow:
+        0 0 0 4px var(--bg-card),
+        0 0 0 5px var(--border),
+        0 12px 32px rgba(0, 79, 159, 0.12);
+    }
+    .hero__text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      min-width: 0;
+    }
+    .hero__name {
+      font-size: clamp(1.85rem, 5vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin: 0;
       color: var(--text-primary);
     }
-
-    .tagline {
-      font-size: 1rem;
+    .hero__tagline {
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.45;
+    }
+    .hero__location {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      margin: 0 0 2.5rem;
+      margin-top: 0.2rem;
+    }
+    .hero__location::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
     }
 
+    /* ── Bio paragraphs ── */
+    .bio {
+      margin-bottom: 2.5rem;
+    }
     .bio p {
       font-size: 1rem;
       color: var(--text-secondary);
       margin: 0 0 1.1rem;
     }
-
-    .divider {
-      border: none;
-      height: 1px;
-      background: var(--border);
-      margin: 3rem 0 2rem;
+    .bio p:last-child { margin-bottom: 0; }
+    .bio strong {
+      color: var(--text-primary);
+      font-weight: 600;
     }
 
+    /* ── Highlights row: small chips for credentials ── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .chip {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.4rem 0.85rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      color: var(--text-secondary);
+      letter-spacing: 0.005em;
+    }
+    .chip strong {
+      color: var(--primary);
+      font-weight: 700;
+      margin-right: 0.25rem;
+    }
+
+    /* ── Featured project: the toolkit ── */
+    .feature {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 3rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+      position: relative;
+    }
+    .feature:hover,
+    .feature:focus-visible {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 79, 159, 0.08);
+      outline: none;
+    }
+    .feature__label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .feature__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .feature__desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.8rem;
+      line-height: 1.55;
+    }
+    .feature__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .feature__cta::after {
+      content: "→";
+      transition: transform 0.18s ease;
+    }
+    .feature:hover .feature__cta::after { transform: translateX(3px); }
+
+    /* ── Links bar ── */
+    .links-section {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    .links-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
     .links {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem 1.5rem;
       font-size: 0.95rem;
     }
-
     .links a {
       color: var(--primary);
       text-decoration: none;
@@ -89,7 +253,6 @@
       padding-bottom: 1px;
       transition: border-color 0.15s ease, color 0.15s ease;
     }
-
     .links a:hover,
     .links a:focus-visible {
       color: var(--primary-hover);
@@ -99,31 +262,91 @@
 
     footer {
       margin-top: 4rem;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 540px) {
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+      }
+      .hero__name { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>Sukrithi Sood</h1>
-    <p class="tagline">REPLACE_ME — one short tagline (e.g. "Researcher and writer based in [city]")</p>
-
-    <section class="bio">
-      <p>REPLACE_ME — first paragraph. Two or three sentences about who you are, what you do, and what you're interested in. Keep it human; this is not a CV.</p>
-      <p>REPLACE_ME — optional second paragraph if you want to expand. What you've been working on lately, where you've been, or what you're curious about right now.</p>
+    <!-- Hero: photo + name + tagline -->
+    <section class="hero">
+      <img
+        class="hero__photo"
+        src="profile.jpg"
+        alt="Sukrithi Sood"
+        width="132"
+        height="132"
+      />
+      <div class="hero__text">
+        <h1 class="hero__name">Sukrithi Sood</h1>
+        <p class="hero__tagline">
+          Management professional in brand strategy, consulting, and consumer insight
+        </p>
+        <span class="hero__location">Gurugram, India</span>
+      </div>
     </section>
 
-    <hr class="divider" />
+    <!-- Bio -->
+    <section class="bio">
+      <p>
+        I work at the intersection of <strong>brand strategy</strong>,
+        <strong>business consulting</strong>, and <strong>data analytics</strong> —
+        usually on the parts of a problem where commercial outcomes meet consumer
+        behaviour. My experience spans international and Indian clients across process
+        optimisation, brand positioning, market intelligence, and retail execution.
+      </p>
+      <p>
+        I&rsquo;m currently a consultant at <strong>Xynteo</strong> in Gurugram,
+        and recently led a workstream with <strong>SWAYAM</strong> (Ministry of
+        Education). Before that, I spent a year and a half at <strong>Unilever</strong>
+        across its Mumbai brand teams and as Business Manager for the Premium
+        Beauty&ndash;Wellness portfolio in East India. I started my career as a
+        consultant at <strong>EY</strong>.
+      </p>
+    </section>
 
-    <nav class="links" aria-label="Contact and social links">
-      <a href="mailto:REPLACE_ME@example.com">Email</a>
-      <a href="https://www.linkedin.com/in/REPLACE_ME/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/sukrithisood" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://x.com/REPLACE_ME" target="_blank" rel="noopener">Twitter</a>
-    </nav>
+    <!-- Highlight chips -->
+    <div class="chips" aria-label="Credentials">
+      <span class="chip"><strong>IIM Ahmedabad</strong> · MBA</span>
+      <span class="chip"><strong>Xynteo</strong> · Consultant</span>
+      <span class="chip"><strong>Unilever</strong> · Brand &amp; Sales</span>
+      <span class="chip"><strong>EY</strong> · Business Consulting</span>
+    </div>
 
-    <footer>© 2025</footer>
+    <!-- Featured project: the toolkit -->
+    <a href="/mrftoolkit/" class="feature" aria-label="Open the MRF Practitioner's Toolkit">
+      <div class="feature__label">Featured project</div>
+      <h2 class="feature__title">MRF Practitioner&rsquo;s Toolkit</h2>
+      <p class="feature__desc">
+        A field-validated operational guide for Material Recovery Facility operators
+        across India &mdash; built in partnership with Hindustan Unilever and Xynteo.
+        Health indicators, best practices, risk matrix, and downloadable templates.
+      </p>
+      <span class="feature__cta">Open the toolkit</span>
+    </a>
+
+    <!-- Links -->
+    <section class="links-section">
+      <div class="links-label">Get in touch</div>
+      <nav class="links" aria-label="Contact and social links">
+        <a href="mailto:sood.sukrithi@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/sukrithisood/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/sukrithisood" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </section>
+
+    <footer>© 2025 · Sukrithi Sood</footer>
   </main>
 </body>
 </html>

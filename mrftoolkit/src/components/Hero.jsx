@@ -33,7 +33,8 @@ export default function Hero() {
               </Button>
               <Button
                 as="a"
-                href={hero.secondaryCta.href}
+                href={`${import.meta.env.BASE_URL}downloads/fulltoolkit.pdf`}
+                download="MRF-Practitioner-Toolkit.pdf"
                 variant="outline"
                 size="lg"
                 icon="Download"

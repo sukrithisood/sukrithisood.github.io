@@ -210,6 +210,13 @@
   color: var(--primary-fg);
   border-color: var(--primary);
 }
+/* Keep white text on the active pill when hovering it (otherwise the generic
+   .kpi-tab:hover above turns it blue-on-blue and the text disappears). */
+.kpi-tab--active:hover {
+  color: var(--primary-fg);
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
 .kpi-tab__count { opacity: 0.7; font-weight: 400; margin-left: 0.15em; }
 
 .kpi-grid {

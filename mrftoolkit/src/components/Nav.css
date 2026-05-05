@@ -1,9 +1,30 @@
 /* src/components/Nav.css */
+
+/* Set up per-viewport defaults so the nav sticks below the header
+   even before the JS height hook runs. The hook will overwrite these
+   with exact pixel values, but the defaults handle the first paint. */
+:root {
+  --header-h: 64px;   /* desktop header is single-row, ~64px */
+  --nav-h: 48px;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --header-h: 150px;  /* mobile header is 3 rows stacked, ~150px */
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --header-h: 140px;  /* slightly tighter on tiny phones */
+  }
+}
+
 .site-nav {
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border);
   position: sticky;
-  top: var(--header-h, 44px);
+  top: var(--header-h);
   z-index: var(--z-nav);
   box-shadow: 0 1px 0 rgba(0,0,0,0.03);
 }
@@ -79,23 +100,22 @@
   /* Closed: completely hidden, no sliver */
   .site-nav__list {
     position: fixed;
-    top: calc(var(--header-h, 44px) + var(--nav-h, 48px));
+    top: calc(var(--header-h) + var(--nav-h));
     left: 0;
     right: 0;
     flex-direction: column;
     background: var(--bg-surface);
     padding: 0;
     gap: 0;
-    /* Slide vertically: hidden by default */
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--duration-base) var(--ease-out);
     pointer-events: none;
     z-index: var(--z-nav);
-    border-top: 0 solid var(--border); /* zero-width when closed */
+    border-top: 0 solid var(--border);
   }
   .site-nav__list--open {
-    max-height: calc(100vh - var(--header-h, 44px) - var(--nav-h, 48px));
+    max-height: calc(100vh - var(--header-h) - var(--nav-h));
     overflow-y: auto;
     pointer-events: auto;
     box-shadow: var(--shadow-md);
