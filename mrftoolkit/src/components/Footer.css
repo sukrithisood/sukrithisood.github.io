@@ -50,40 +50,121 @@
   margin-top: 0.2rem;
 }
 
-.site-footer__right {
+/* ── Share block ── */
+.site-footer__share-block {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: var(--space-3);
 }
+
+.site-footer__share-title {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.site-footer__share-icons {
+  display: flex;
+  gap: 0.55rem;
+  /* Single horizontal row — no wrapping, all four icons fit */
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
+/* Icon-only circular buttons */
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: transparent;
+  color: #fff;
+  border-radius: 50%;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-out);
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+/* Force white in every link state — beats any global a:hover rule */
+.share-btn,
+.share-btn:link,
+.share-btn:visited {
+  color: #fff;
+}
+.share-btn:hover,
+.share-btn:active {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.7);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+/* Only show focus ring for keyboard navigation, not mouse clicks.
+   :focus-visible is the modern accessible default — preserves a11y for
+   keyboard users while preventing the "stuck selected" look for mouse users. */
+.share-btn:focus {
+  outline: none;
+}
+.share-btn:focus-visible {
+  outline: none;
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.7);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.35);
+}
+
+/* Inline brand SVG icons (WhatsApp, LinkedIn) — currentColor inherits white */
+.share-btn__svg {
+  flex-shrink: 0;
+  display: block;
+}
+
+/* "Copied!" feedback — uses a small pill that pops above the copy button */
+.share-btn--copied {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.8);
+}
+.share-btn--copied::after {
+  content: 'Copied!';
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  pointer-events: none;
+  /* Tiny tail pointing down to the button */
+}
+.share-btn--copied::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #fff;
+  pointer-events: none;
+}
+
 .site-footer__ver {
   font-size: var(--fs-xs);
   color: rgba(255,255,255,0.55);
   letter-spacing: 0.04em;
-}
-
-.site-footer__share {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.1rem;
-  border: 1px solid rgba(255,255,255,0.4);
-  background: transparent;
-  color: #fff;
-  border-radius: var(--radius-md);
-  font: inherit;
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--duration-fast) var(--ease-out);
-}
-.site-footer__share:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.7);
-}
-.site-footer__share:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.35);
+  margin-top: var(--space-2);
 }
 
 .site-footer__legal {
@@ -97,12 +178,23 @@
   gap: 0.6rem;
 }
 
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .site-footer__inner {
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
-  .site-footer__right {
+  .site-footer__share-block {
     align-items: flex-start;
+  }
+  .site-footer__share-icons {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .share-btn {
+    width: 36px;
+    height: 36px;
   }
 }
