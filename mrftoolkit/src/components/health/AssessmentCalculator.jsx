@@ -74,7 +74,7 @@ export default function AssessmentCalculator() {
               Show my MRF&rsquo;s performance zones
             </Button>
             <span className="assess__hint">
-              Partial input is fine, results show for values entered only
+              Partial input is fine, results show for values entered only. Indicative only for an Urban, mid-sized MRF.
             </span>
           </div>
         </form>
