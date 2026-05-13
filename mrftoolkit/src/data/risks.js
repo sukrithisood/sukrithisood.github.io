@@ -19,7 +19,7 @@ export const riskLegend = [
  */
 export const riskMatrix = [
   // Row 1: HIGH impact
-  { tone: 'mod',      bubbles: [] },
+  { tone: 'mod',      bubbles: [{ id: 'compliance', code: 'COMP', label: 'Compliance risk' }] },
   { tone: 'high',     bubbles: [{ id: 'integrity', code: 'INT', label: 'Data / Integrity' }] },
   { tone: 'critical', bubbles: [
     { id: 'safety', code: 'SAF', label: 'Safety risk' },
@@ -30,7 +30,7 @@ export const riskMatrix = [
   { tone: 'mod',      bubbles: [{ id: 'financial', code: 'FIN', label: 'Financial risk' }] },
   { tone: 'high',     bubbles: [{ id: 'operational', code: 'OP', label: 'Operational risk' }] },
   // Row 3: LOW impact
-  { tone: 'low',      bubbles: [{ id: 'compliance', code: 'COMP', label: 'Compliance risk' }] },
+  { tone: 'low',      bubbles: [] },
   { tone: 'low',      bubbles: [] },
   { tone: 'mod',      bubbles: [] },
 ]
