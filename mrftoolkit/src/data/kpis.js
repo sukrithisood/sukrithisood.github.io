@@ -29,7 +29,7 @@ export const kpis = [
 
 // Configuration for the self-assessment calculator (matches kpis above by id)
 export const assessConfig = [
-  { id: 'a1', label: 'Capacity utilisation', unit: '%',      placeholder: 'e.g. 72',  green: [70, 90],   amber: [50, 70],  inverted: false, tip: 'Review collection coverage and CBWG pipeline' },
+  { id: 'a1', label: 'Capacity utilisation', unit: '%',      placeholder: 'e.g. 70',  green: [70, 90],   amber: [50, 70],  inverted: false, tip: 'Review collection coverage and BWG pipeline' },
   { id: 'a2', label: 'Recovery efficiency',  unit: '%',      placeholder: 'e.g. 58',  green: [85, 100],  amber: [70, 85],  inverted: false, tip: 'Improve gate grading and sorting accuracy' },
   { id: 'a3', label: 'Distinct Revenue Streams',   unit: 'count',    placeholder: 'e.g. 4',  green: [4, 99999999],    amber: [2, 4], inverted: false,  tip: 'Manage diversification to mitigate risk exposure' },
   { id: 'a4', label: 'Labour productivity',  unit: 'kg/day', placeholder: 'e.g. 200', green: [250, 9999],amber: [150, 250],inverted: false, tip: 'Check absenteeism and cross-training coverage' },
