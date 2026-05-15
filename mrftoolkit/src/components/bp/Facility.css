@@ -202,7 +202,7 @@
 .site-card--success { background: var(--success-50);  border-color: var(--success-border); }
 .site-card--warning { background: var(--warning-50);  border-color: var(--warning-border); }
 .site-card--info {
-  background: #f3f6f8;
+  background: #c1e2f7;
   border-color: #d7e1e8;
 }
 .full-width {
