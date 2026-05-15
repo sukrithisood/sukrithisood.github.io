@@ -36,7 +36,7 @@ export const siteSelectionCards = [
   },
   {
   tone: 'info',
-  icon: 'Map',
+  icon: 'Building2',
   title: 'Repurposing urban and industrial spaces',
   tag: 'Adaptive infrastructure',
   body: 'Many successful urban MRFs operate within repurposed warehouses, transfer stations, or underutilised industrial spaces. Adaptive reuse can reduce infrastructure costs, improve city proximity, and strengthen integration with municipal systems.',
