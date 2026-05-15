@@ -18,11 +18,12 @@ export default function Scale() {
           <div className="scale-card__icon">
             <Icon name="MapPin" size={20} />
           </div>
-          <h4 className="scale-card__title">MRF Landscape</h4>
+          <h4 className="scale-card__title">Material-based Expansion</h4>
           <p className="scale-card__body">
-            Increasing regulatory stringency and evolving rules are creating opportunities for MRFs to position themselves as compliance partners for brands, ULBs, and PROs. 
-            Rapid urbanisation and consumption patterns are introducing new and complex waste streams. 
-            Regionalised expansion opportunities.
+            Material-based expansion focuses on increasing the quantity, quality, or value of materials processed and recovered through the MRF ecosystem. 
+            Feedstock-based: Collection scale up 
+            Processing-based: Enhanching value of existing end materials and diversification into additional waste streams
+            Sales-based: Downstream integrations (vertical/ horizontal) via JVs or in-house
           </p>
         </article>
 
@@ -30,9 +31,13 @@ export default function Scale() {
           <div className="scale-card__icon">
             <Icon name="Layers" size={20} />
           </div>
-          <h4 className="scale-card__title">Revenue diversification</h4>
+          <h4 className="scale-card__title">Service-based Expansion</h4>
           <p className="scale-card__body">
-            Three tiered revenue: core, enhanced revenue on existing throughput, new material and service streams.
+            Service-based expansion focuses on leveraging operational capabilities, data systems, and ecosystem relationships beyond core material recovery functions. Common pathways include:
+            EPR and compliance support services
+            Waste audits and technical consultancy
+            Data, reporting, and traceability services
+            Plastic credits and impact-linked services
           </p>
         </article>
         <article className="scale-card">
