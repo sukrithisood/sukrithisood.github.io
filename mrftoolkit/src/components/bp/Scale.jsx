@@ -33,9 +33,9 @@ export default function Scale() {
           </div>
           <h4 className="scale-card__title">Service-based Expansion</h4>
           <p className="scale-card__body">
-            Service-based expansion focuses on leveraging operational capabilities, data systems, and ecosystem relationships beyond core material recovery functions. Common pathways include: <br>
-            EPR and compliance support services <br>
-            Waste audits and technical consultancy <br>
+            Service-based expansion focuses on leveraging operational capabilities, data systems, and ecosystem relationships beyond core material recovery functions. Common pathways include:
+            EPR and compliance support services
+            Waste audits and technical consultancy
             Data, reporting, and traceability services <br>
             Plastic credits and impact-linked services
           </p>
