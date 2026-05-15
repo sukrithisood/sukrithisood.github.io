@@ -37,13 +37,13 @@ export const siteSelectionCards = [
   {
   tone: 'info',
   icon: 'Building2',
-  title: 'Repurposing urban and industrial spaces',
+  title: 'Repurposing existing urban infrastructure',
   tag: 'Adaptive infrastructure',
-  body: 'Many successful urban MRFs operate within repurposed warehouses, transfer stations, or underutilised industrial spaces. Adaptive reuse can reduce infrastructure costs, improve city proximity, and strengthen integration with municipal systems.',
+  body: 'In most Indian cities, greenfield MRF land is scarce and slow to acquire. In practice, brownfield MRFs are frequently set up in repurposed municipal or institutional structures, often requiring refurbishment and design modifications to align with operational requirements. Such sites introduce a specific set of operational constraints that must be diagnosed and managed upfront.',
   tips: [
-    'Assess existing transfer stations, warehouses, or industrial land parcels before greenfield expansion',
-    'Urban proximity can improve collection efficiency and reduce transport costs',
-    'Retrofitting existing structures may significantly lower capex and approval timelines'
+    'Uneven or split flooring or fragmented spaces can be a challenge. Define functional zones by level (ex: sorting on an intermediate level, storage on upper/ lower levels) while minimising cross-movement',
+    'Inadequate ceiling height and ventilation can be a challenge. Install roof ridge ventilators or turbo ventilators. Prefer inclined conveyors and vertical material movement systems ',
+    'Vehicle access: Assess vehicle entry clearance for collection vehicles, road conditions, and turning space '
   ],
   fullWidth: true,
 }
