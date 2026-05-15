@@ -17,15 +17,14 @@ export default function Scale() {
             <Icon name="MapPin" size={20} />
           </div>
           <h4 className="scale-card__title">Material-based Expansion</h4>
-          <p className="scale-card__body">
-            Material-based expansion focuses on increasing the quantity, quality, or value of materials processed and recovered through the MRF ecosystem.
-            <br></br>
-            Feedstock-based: Collection scale up
-            <br></br>
-            Processing-based: Enhanching value of existing end materials and diversification into additional waste streams
-            <br></br>
-            Sales-based: Downstream integrations (vertical/ horizontal) via JVs or in-house
-          </p>
+          <div className="scale-card__body">
+            <p className="scale-card__lead">
+              Material-based expansion focuses on increasing the quantity, quality, or value of materials processed and recovered through the MRF ecosystem.
+            </p>
+            <p>Feedstock-based: Collection scale up</p>
+            <p>Processing-based: Enhancing value of existing end materials and diversification into additional waste streams</p>
+            <p>Sales-based: Downstream integrations (vertical/ horizontal) via JVs or in-house</p>
+          </div>
         </article>
 
         <article className="scale-card">
@@ -33,17 +32,16 @@ export default function Scale() {
             <Icon name="Layers" size={20} />
           </div>
           <h4 className="scale-card__title">Service-based Expansion</h4>
-          <p className="scale-card__body">
-            Service-based expansion focuses on leveraging operational capabilities, data systems, and ecosystem relationships beyond core material recovery functions. Common pathways include:
-            <br></br>
-            EPR and compliance support services
-            <br></br>
-            Waste audits and technical consultancy
-            <br></br>
-            Data, reporting, and traceability services
-            <br></br>
-            Plastic credits and impact-linked services
-          </p>
+
+          <div className="scale-card__body">
+            <p className="scale-card__lead">
+              Service-based expansion focuses on leveraging operational capabilities, data systems, and ecosystem relationships beyond core material recovery functions. Common pathways include:
+            </p>
+            <p>EPR and compliance support services</p>
+            <p>Waste audits and technical consultancy</p>
+            <p>Data, reporting, and traceability services</p>
+            <p>Plastic credits and impact-linked services</p>
+          </div>
         </article>
 
         <article className="scale-card">
@@ -60,14 +58,14 @@ export default function Scale() {
           <div className="scale-card__icon">
             <Icon name="IndianRupee" size={20} />
           </div>
-          <h4 className="scale-card__title">Funding for Expansion: Things to keep in mind </h4>
-          <p className="scale-card__body">
-            For MRF financing, institutional reliability matters as much as technical capability. Investors trust structured, enforceable, payment-backed municipal partnerships.
-            <br></br>
-            Maintain Signed concession agreement with clear SLAs to showcase clarity and enforceability for funders. 
-            <br></br>
-            Escrow or DBT mechanism for tipping fees
-          </p>
+          <h4 className="scale-card__title">Funding for Expansion: Things to keep in mind</h4>
+          <div className="scale-card__body">
+            <p className="scale-card__lead">
+              For MRF financing, institutional reliability matters as much as technical capability. Investors trust structured, enforceable, payment-backed municipal partnerships.
+            </p>
+            <p>Maintain Signed concession agreement with clear SLAs to showcase clarity and enforceability for funders.</p>
+            <p>Escrow or DBT mechanism for tipping fees</p>
+          </div>
         </article>
       </div>
 
