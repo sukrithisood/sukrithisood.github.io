@@ -44,7 +44,7 @@ export const siteSelectionCards = [
     'Assess existing transfer stations, warehouses, or industrial land parcels before greenfield expansion',
     'Urban proximity can improve collection efficiency and reduce transport costs',
     'Retrofitting existing structures may significantly lower capex and approval timelines'
-  ]
+  ],
   fullWidth: true,
 }
 ]
