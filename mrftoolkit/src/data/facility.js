@@ -45,5 +45,6 @@ export const siteSelectionCards = [
     'Urban proximity can improve collection efficiency and reduce transport costs',
     'Retrofitting existing structures may significantly lower capex and approval timelines'
   ]
+  fullWidth: true,
 }
 ]

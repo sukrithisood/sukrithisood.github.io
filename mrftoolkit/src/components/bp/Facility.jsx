@@ -101,7 +101,7 @@ export default function Facility() {
 
       <div className="site-grid">
         {siteSelectionCards.map((card) => (
-          <article key={card.title} className={`site-card site-card--${card.tone}`}>
+          <article key={card.title} className={`site-card site-card-${card.tone} ${card.fullWidth ? 'full-width' : ''}`}>
             <header className="site-card__head">
               <div className="site-card__icon">
                 <Icon name={card.icon} size={18} />
