@@ -3,9 +3,9 @@
 export const riskIntro = 'This section is intended as a diagnostic lens. Operators can use it to periodically assess exposure to high-impact, often under-managed risks and identify areas requiring preventive action — even if current operations appear stable. These risks can affect long-term viability if not proactively addressed.'
 
 export const riskLegend = [
-  { id: 'low',      label: 'Low exposure',      tone: 'low' },
-  { id: 'mod',      label: 'Moderate exposure', tone: 'mod' },
-  { id: 'high',     label: 'High exposure',     tone: 'high' },
+  { id: 'low',      label: 'Low risk',      tone: 'low' },
+  { id: 'mod',      label: 'Moderate risk', tone: 'mod' },
+  { id: 'high',     label: 'High risk',     tone: 'high' },
   { id: 'critical', label: 'Critical — act now', tone: 'critical' },
 ]
 
@@ -19,7 +19,7 @@ export const riskLegend = [
  */
 export const riskMatrix = [
   // Row 1: HIGH impact
-  { tone: 'high',      bubbles: [{ id: 'compliance', code: 'COMP', label: 'Compliance risk' }] },
+  { tone: 'mod',      bubbles: [{ id: 'compliance', code: 'COMP', label: 'Compliance risk' }] },
   { tone: 'high',     bubbles: [{ id: 'integrity', code: 'INT', label: 'Data / Integrity' }] },
   { tone: 'critical', bubbles: [
     { id: 'safety', code: 'SAF', label: 'Safety risk' },
