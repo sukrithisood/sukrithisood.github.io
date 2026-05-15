@@ -20,9 +20,9 @@ export default function Scale() {
           </div>
           <h4 className="scale-card__title">Material-based Expansion</h4>
           <p className="scale-card__body">
-            Material-based expansion focuses on increasing the quantity, quality, or value of materials processed and recovered through the MRF ecosystem. <br> 
-            Feedstock-based: Collection scale up <br>
-            Processing-based: Enhanching value of existing end materials and diversification into additional waste streams <br>
+            Material-based expansion focuses on increasing the quantity, quality, or value of materials processed and recovered through the MRF ecosystem.
+            Feedstock-based: Collection scale up
+            Processing-based: Enhanching value of existing end materials and diversification into additional waste streams
             Sales-based: Downstream integrations (vertical/ horizontal) via JVs or in-house
           </p>
         </article>
@@ -36,7 +36,7 @@ export default function Scale() {
             Service-based expansion focuses on leveraging operational capabilities, data systems, and ecosystem relationships beyond core material recovery functions. Common pathways include:
             EPR and compliance support services
             Waste audits and technical consultancy
-            Data, reporting, and traceability services <br>
+            Data, reporting, and traceability services
             Plastic credits and impact-linked services
           </p>
         </article>
