@@ -34,4 +34,16 @@ export const siteSelectionCards = [
       'Assess road access for vehicles — a facility unreachable during monsoon is effectively seasonal',
     ],
   },
+  {
+  tone: 'info',
+  icon: 'Map',
+  title: 'Repurposing urban and industrial spaces',
+  tag: 'Adaptive infrastructure',
+  body: 'Many successful urban MRFs operate within repurposed warehouses, transfer stations, or underutilised industrial spaces. Adaptive reuse can reduce infrastructure costs, improve city proximity, and strengthen integration with municipal systems.',
+  tips: [
+    'Assess existing transfer stations, warehouses, or industrial land parcels before greenfield expansion',
+    'Urban proximity can improve collection efficiency and reduce transport costs',
+    'Retrofitting existing structures may significantly lower capex and approval timelines'
+  ]
+}
 ]
